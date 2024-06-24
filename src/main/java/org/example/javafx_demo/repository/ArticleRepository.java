@@ -1,11 +1,11 @@
 package org.example.javafx_demo.repository;
 
 import org.example.javafx_demo.entity.Article;
+import org.example.javafx_demo.entity.Student;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import javax.swing.text.AbstractDocument;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ArticleRepository {
 
@@ -33,6 +33,32 @@ public class ArticleRepository {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public ArrayList<Article> findAll(){
+        ArrayList<Article> articles = new ArrayList<>();
+        try {
+            Connection connection = DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
+            String prSql = "select * from articles";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(prSql);
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                String content = resultSet.getString("content");
+                Article obj = new Article();
+                obj.setId(id);
+                obj.setTitle(title);
+                obj.setDescription(description);
+                obj.setContent(content);
+                articles.add(obj);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return articles;
     }
 
     public static void main(String[] args) {
