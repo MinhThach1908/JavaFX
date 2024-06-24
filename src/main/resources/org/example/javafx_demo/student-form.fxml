@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx_demo.controller.StudentForm">
+   <children>
+      <VBox alignment="CENTER" layoutX="26.0" layoutY="26.0" prefHeight="347.0" prefWidth="548.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="70.0" text="StudentCode" />
+            <TextField fx:id="studentCode" prefHeight="21.0" prefWidth="548.0" />
+            <Label text="Student Fullname" />
+            <TextField fx:id="studentFullname" />
+            <Label text="Email" />
+            <TextField fx:id="studentEmail" />
+            <Label text="Phone" />
+            <TextField fx:id="studentPhone" />
+            <Button mnemonicParsing="false" onAction="#doSomething" text="Submit" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
